@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunset Gallery</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: rgba(15, 23, 42, 0.72);
+            --panel-border: rgba(148, 163, 184, 0.2);
+            --text: #e2e8f0;
+            --muted: #cbd5e1;
+            --accent: #f59e0b;
+            --accent-strong: #f97316;
+            --shadow: rgba(15, 23, 42, 0.38);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(251, 146, 60, 0.35), transparent 30%),
+                linear-gradient(135deg, #020617 0%, #0f172a 35%, #1e293b 100%);
+            color: var(--text);
+        }
+
+        .card {
+            width: min(92vw, 1100px);
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            border-radius: 28px;
+            box-shadow: 0 28px 70px var(--shadow);
+            backdrop-filter: blur(12px);
+            overflow: hidden;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+        }
+
+        .image-panel {
+            min-height: 620px;
+            background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .image-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.6));
+        }
+
+        .content {
+            padding: 54px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(245, 158, 11, 0.14);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            color: #fcd34d;
+            font-size: 0.77rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.3rem, 5vw, 4.8rem);
+            line-height: 0.95;
+            letter-spacing: -0.06em;
+        }
+
+        p {
+            margin: 22px 0 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            max-width: 34ch;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 32px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 22px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #fff;
+            box-shadow: 0 16px 28px rgba(249, 115, 22, 0.35);
+        }
+
+        .button.secondary {
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: var(--text);
+            background: rgba(15, 23, 42, 0.28);
+        }
+
+        .meta {
+            display: flex;
+            gap: 22px;
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(148, 163, 184, 0.15);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .meta strong {
+            display: block;
+            color: var(--text);
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 860px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .image-panel {
+                min-height: 420px;
+            }
+
+            .content {
+                padding: 32px 24px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <section class="layout">
+            <div class="image-panel" aria-label="Sunset landscape"></div>
+            <div class="content">
+                <span class="tag">Featured view</span>
+                <h1>Golden hour.</h1>
+                <p>
+                    A calm landscape framed by warm light, open horizon, and the quiet rhythm of evening.
+                    Designed to feel cinematic, modern, and instantly welcoming.
+                </p>
+
+                <div class="actions">
+                    <a class="button primary" href="#">Explore</a>
+                    <a class="button secondary" href="#">View details</a>
+                </div>
+
+                <div class="meta">
+                    <div>
+                        <strong>4.9</strong>
+                        Rating
+                    </div>
+                    <div>
+                        <strong>120+</strong>
+                        Curated shots
+                    </div>
+                    <div>
+                        <strong>3 min</strong>
+                        Read time
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
